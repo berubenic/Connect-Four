@@ -2,5 +2,9 @@
 
 # Player
 class Player
-  def initialize; end
+  attr_reader :name, :turn
+  def initialize
+    @name = nil
+    @turn = false
+  end
 end
