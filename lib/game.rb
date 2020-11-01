@@ -10,4 +10,8 @@ class Game
     @player_one = player_one
     @player_two = player_two
   end
+
+  def prepare_game
+    @board.prepare_game
+  end
 end

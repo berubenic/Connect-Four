@@ -7,4 +7,6 @@ class Player
     @name = nil
     @turn = false
   end
+
+  def prepare_game; end
 end
