@@ -6,5 +6,11 @@ class Board
     @cells = nil
   end
 
-  def prepare_game; end
+  def prepare_game
+    create_board
+  end
+
+  def create_board
+    @cells = []
+  end
 end
