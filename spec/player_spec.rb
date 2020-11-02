@@ -16,4 +16,25 @@ describe Player do
       end
     end
   end
+
+  describe '#prepare_game' do
+    context 'self responds to ask_name' do
+      it 'sends ask_name' do
+        expect(player).to respond_to(:assign_name)
+      end
+    end
+  end
+
+  describe '#assign_name' do
+    context 'user input is assigned to @name' do
+      before do
+        input = 'Bob'
+        allow(player).to receive(:input_name).and_return(input)
+      end
+      it 'assigns @name to Bob' do
+        player.assign_name
+        expect(player.name).to eq('Bob')
+      end
+    end
+  end
 end

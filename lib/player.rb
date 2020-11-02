@@ -8,5 +8,16 @@ class Player
     @turn = false
   end
 
-  def prepare_game; end
+  def prepare_game
+    ask_name
+  end
+
+  def assign_name
+    @name = input_name
+  end
+
+  def input_name
+    puts 'What is your name?'
+    gets.chomp
+  end
 end
