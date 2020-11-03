@@ -35,9 +35,9 @@ describe Game do
     context 'send prepare_game to @board' do
       let(:board) { game.instance_variable_get(:@board) }
 
-      it 'responds to the prepare_game message' do
+      it 'receives the prepare_game message' do
+        expect(board).to receive(:prepare_game)
         game.prepare_game
-        expect(board).to respond_to(:prepare_game)
       end
     end
 
@@ -45,14 +45,14 @@ describe Game do
       let(:player_one) { game.instance_variable_get(:@player_one) }
       let(:player_two) { game.instance_variable_get(:@player_two) }
 
-      it 'player_one responds to the the prepare_game message' do
+      it 'player_one receives the the prepare_game message' do
+        expect(player_one).to receive(:prepare_game)
         game.prepare_game
-        expect(player_one).to respond_to(:prepare_game)
       end
 
-      it 'player_two responds to the prepare_game message' do
+      it 'player_two receives the prepare_game message' do
+        expect(player_two).to receive(:prepare_game)
         game.prepare_game
-        expect(player_two).to respond_to(:prepare_game)
       end
     end
   end

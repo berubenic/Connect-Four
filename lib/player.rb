@@ -9,7 +9,7 @@ class Player
   end
 
   def prepare_game
-    ask_name
+    assign_name
   end
 
   def assign_name

@@ -14,5 +14,7 @@ class Game
 
   def prepare_game
     @board.prepare_game
+    @player_one.prepare_game
+    @player_two.prepare_game
   end
 end
