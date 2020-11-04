@@ -24,4 +24,6 @@ class Player
   def capture_name
     gets.chomp
   end
+
+  def play_turn; end
 end

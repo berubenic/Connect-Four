@@ -11,7 +11,7 @@ describe Player do
     end
 
     it 'assigns @turn as false' do
-      expect(player.turn).to be false
+      expect(player.turn).to be(true).or be(false)
     end
   end
 
