@@ -8,7 +8,7 @@ require_relative 'cell'
 class Game
   attr_reader :board, :player_one, :player_two
 
-  def initialize(board = Board.new, player_one = Player.new, player_two = Player.new)
+  def initialize(board = Board.new, player_one = Player.new(true), player_two = Player.new(false))
     @board = board
     @player_one = player_one
     @player_two = player_two
