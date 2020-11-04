@@ -4,6 +4,7 @@ require './lib/cell'
 
 describe Cell do
   describe '#initialize' do
+    subject(:cell) { described_class.new(0, 0) }
     let(:coordinate) { cell.instance_variable_get(:@coordinate) }
     let(:content) { cell.instance_variable_get(:@content) }
 
@@ -23,12 +24,8 @@ describe Cell do
       end
     end
 
-    context '@content is nil when initializing' do
-      subject(:cell) { described_class.new(6, 6) }
-
-      it 'assigns nil to @content' do
-        expect(content).to be nil
-      end
+    it 'assigns nil to @content' do
+      expect(content).to be nil
     end
   end
 end
