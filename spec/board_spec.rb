@@ -13,11 +13,8 @@ describe Board do
   end
 
   describe '#prepare_game' do
-    before do
-      allow(board).to receive(:create_board)
-    end
     it 'sends #create_board to self' do
-      expect(board).to receive(:create_board)
+      expect(board).to respond_to(:create_board)
       board.prepare_game
     end
   end
