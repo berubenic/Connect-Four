@@ -20,11 +20,12 @@ class Game
     player_two.prepare_game
   end
 
-  def play_turn
-    if player_one.turn == true
-      player_one.play_turn
-    elsif player_two.turn == true
-      player_two.play_turn
-    end
+  def play_turn(player = current_player)
+    player.play_turn
+  end
+
+  def current_player
+    return player_one if player_one.turn == true
+    return player_two if player_two.turn == true
   end
 end
