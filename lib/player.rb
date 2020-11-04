@@ -13,11 +13,15 @@ class Player
   end
 
   def assign_name
-    @name = input_name
+    @name = ask_name
   end
 
-  def input_name
+  def ask_name
     puts 'What is your name?'
+    capture_name
+  end
+
+  def capture_name
     gets.chomp
   end
 end
