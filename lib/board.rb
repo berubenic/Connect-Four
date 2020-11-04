@@ -14,15 +14,15 @@ class Board
 
   def create_board
     @cells = []
-    (0..5).each do |y|
-      @cells << create_row(y)
+    (0..5).each do |y_coordinate|
+      @cells << create_row(y_coordinate)
     end
   end
 
-  def create_row(y)
+  def create_row(y_coordinate)
     row = []
-    (0..6).each do |x|
-      row << Cell.new(x, y)
+    (0..6).each do |x_coordinate|
+      row << Cell.new(x_coordinate, y_coordinate)
     end
     row
   end

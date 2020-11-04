@@ -4,55 +4,40 @@ require './lib/board'
 
 describe Board do
   subject(:board) { described_class.new }
+  let(:cells) { board.instance_variable_get(:@cells) }
 
   describe '#initialize' do
-    context 'before game is setup' do
-      let(:cells) { board.instance_variable_get(:@cells) }
-
-      it 'has an empty @cells variable' do
-        expect(cells).to be nil
-      end
+    it 'assigns @cells' do
+      expect(cells).to be nil
     end
   end
 
   describe '#prepare_game' do
-    context 'creates board' do
-      it 'self responds to create_board' do
-        expect(board).to respond_to(:create_board)
-      end
+    before do
+      allow(board).to receive(:create_board)
+    end
+    it 'sends #create_board to self' do
+      expect(board).to receive(:create_board)
+      board.prepare_game
     end
   end
 
   describe '#create_board' do
-    let(:cells) { board.instance_variable_get(:@cells) }
-
-    context 'makes @cells a 2d Array' do
-      it '@cells is an Array' do
-        board.create_board
-        expect(cells).to be_a(Array)
-      end
-
-      it 'sends #create_row 6 times' do
-        expect(board).to receive(:create_row).exactly(6).times
-        board.create_board
-      end
-
-      it 'pushes 6 arrays to @cells' do
-        board.create_board
-        expect(cells.length).to be(6)
-      end
+    it 'assigns @cells a Array' do
+      board.create_board
+      expect(cells).to be_a(Array)
     end
 
-    context '@cells contains Arrays of coordinates' do
-      it 'first element has 7 nested elements' do
-        board.create_board
-        expect(cells.first.length).to eq(7)
-      end
+    it 'is not an empty Array' do
+      board.create_board
+      expect(cells.empty?).not_to be true
+    end
+  end
 
-      it 'last element has 7 nested elements' do
-        board.create_board
-        expect(cells.last.length).to eq(7)
-      end
+  describe '#create_row' do
+    it 'returns an Array' do
+      y_coordinate = 'some_coordinate'
+      expect(board.create_row(y_coordinate)).to be_a(Array)
     end
   end
 end
