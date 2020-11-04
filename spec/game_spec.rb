@@ -32,28 +32,30 @@ describe Game do
   end
 
   describe '#prepare_game' do
-    context 'send prepare_game to @board' do
-      let(:board) { game.instance_variable_get(:@board) }
+    let(:board) { instance_double(Board) }
+    let(:player_one) { instance_double(Player) }
+    let(:player_two) { instance_double(Player) }
+    subject(:game) { described_class.new(board, player_one, player_two) }
 
-      it 'receives the prepare_game message' do
-        expect(board).to receive(:prepare_game)
-        game.prepare_game
-      end
+    before do
+      allow(board).to receive(:prepare_game)
+      allow(player_one).to receive(:prepare_game)
+      allow(player_two).to receive(:prepare_game)
     end
 
-    context 'send prepare_game to @player_one and @player_two' do
-      let(:player_one) { game.instance_variable_get(:@player_one) }
-      let(:player_two) { game.instance_variable_get(:@player_two) }
+    it 'sends the #prepare_game message to board' do
+      expect(board).to receive(:prepare_game)
+      game.prepare_game
+    end
 
-      it 'player_one receives the the prepare_game message' do
-        expect(player_one).to receive(:prepare_game)
-        game.prepare_game
-      end
+    it 'sends the #prepare_game message to player_one' do
+      expect(board).to receive(:prepare_game)
+      game.prepare_game
+    end
 
-      it 'player_two receives the prepare_game message' do
-        expect(player_two).to receive(:prepare_game)
-        game.prepare_game
-      end
+    it 'sends the #prepare_game message to player_two' do
+      expect(board).to receive(:prepare_game)
+      game.prepare_game
     end
   end
 end
