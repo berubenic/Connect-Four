@@ -61,4 +61,18 @@ describe Board do
       expect { board.invalid_number_message }.to output(correct_phrase).to_stdout
     end
   end
+
+  describe '#top_row_content' do
+    before do
+      board.create_board
+    end
+
+    it 'returns an array' do
+      expect(board.top_row_content).to be_a(Array)
+    end
+
+    it 'all elements are nil when board is created' do
+      expect(board.top_row_content.all?(&:nil?)).to be true
+    end
+  end
 end

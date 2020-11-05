@@ -4,8 +4,10 @@ require_relative 'cell'
 
 # Board
 class Board
-  def initialize
-    @cells = nil
+  attr_reader :cells
+
+  def initialize(cells = nil)
+    @cells = cells
   end
 
   def prepare_game
@@ -43,7 +45,11 @@ class Board
     puts 'Invalid move, must be a number between 0 and 6'
   end
 
-  def column_full?(_move); end
+  def column_full?(move); end
+
+  def top_row_content
+    cells[0].map(&:content)
+  end
 
   def place_turn(move) end
 end
