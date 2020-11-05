@@ -75,4 +75,20 @@ describe Board do
       expect(board.top_row_content.all?(&:nil?)).to be true
     end
   end
+
+  describe '#column_not_full' do
+    before do
+      allow(board).to receive(:top_row_content).and_return(['blue', nil, nil, nil, nil, nil, nil])
+    end
+
+    it 'returns true if column that corresponds to move is not full' do
+      move = '1'
+      expect(board.column_not_full?(move)).to be true
+    end
+
+    it 'returns false if column that corresponds to move is full' do
+      move = '0'
+      expect(board.column_not_full?(move)).to be false
+    end
+  end
 end

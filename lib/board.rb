@@ -45,7 +45,10 @@ class Board
     puts 'Invalid move, must be a number between 0 and 6'
   end
 
-  def column_full?(move); end
+  def column_not_full?(move)
+    content = top_row_content
+    content[move.to_i].nil?
+  end
 
   def top_row_content
     cells[0].map(&:content)
