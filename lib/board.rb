@@ -43,7 +43,7 @@ class Board
     puts 'Invalid move, must be a number between 0 and 6'
   end
 
-  def column_full?(move) end
+  def column_full?(_move); end
 
   def place_turn(move) end
 end

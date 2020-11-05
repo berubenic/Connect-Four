@@ -28,4 +28,22 @@ describe Cell do
       expect(content).to be nil
     end
   end
+
+  describe '#cell_empty?' do
+    context 'cell.content is nil' do
+      subject(:cell) { described_class.new(0, 0) }
+
+      it 'returns true' do
+        expect(cell.cell_empty?).to be true
+      end
+    end
+
+    context 'cell.content is assigned a color' do
+      subject(:cell) { described_class.new(0, 0, 'blue') }
+
+      it 'returns false' do
+        expect(cell.cell_empty?).to be false
+      end
+    end
+  end
 end
