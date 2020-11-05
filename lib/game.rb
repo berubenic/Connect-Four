@@ -31,8 +31,8 @@ class Game
   end
 
   def validate_turn
-    if board.valid_turn?
-      board.place_turn
+    if board.valid_turn?(move)
+      board.place_turn(move)
     else
       play_turn
     end

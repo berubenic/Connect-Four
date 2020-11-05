@@ -27,7 +27,15 @@ class Board
     row
   end
 
-  def valid_turn?; end
+  def valid_turn?(move)
+    valid_number?(move)
+  end
 
-  def place_turn; end
+  def valid_number?(_move)
+    false
+  end
+
+  def column_full?(move) end
+
+  def place_turn(move) end
 end

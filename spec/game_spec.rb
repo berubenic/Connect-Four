@@ -113,29 +113,29 @@ describe Game do
 
     context 'if valid_turn? is true it sends the #place_move message to board' do
       before do
-        allow(board).to receive(:valid_turn?).and_return(true)
-        allow(board).to receive(:place_turn)
+        allow(board).to receive(:valid_turn?).with(game.move).and_return(true)
+        allow(board).to receive(:place_turn).with(game.move)
       end
 
       it 'sends the message #valid_turn? to board' do
-        expect(board).to receive(:valid_turn?)
+        expect(board).to receive(:valid_turn?).with(game.move)
         game.validate_turn
       end
 
       it 'sends the message #place_turn to board' do
-        expect(board).to receive(:place_turn)
+        expect(board).to receive(:place_turn).with(game.move)
         game.validate_turn
       end
     end
 
     context 'if valid_turn? is false it sends the #play_turn message to self' do
       before do
-        allow(board).to receive(:valid_turn?).and_return(false)
+        allow(board).to receive(:valid_turn?).with(game.move).and_return(false)
         allow(game).to receive(:play_turn)
       end
 
       it 'sends the message #valid_turn? to board' do
-        expect(board).to receive(:valid_turn?)
+        expect(board).to receive(:valid_turn?).with(game.move)
         game.validate_turn
       end
 
