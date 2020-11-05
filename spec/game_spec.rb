@@ -105,20 +105,44 @@ describe Game do
     end
   end
 
-  describe '#place_turn' do
+  describe '#validate_turn' do
     let(:board) { instance_double(Board) }
     let(:player_one) { instance_double(Player) }
     let(:player_two) { instance_double(Player) }
     subject(:game) { described_class.new(board, player_one, player_two) }
 
-    before do
-      allow(board).to receive(:place_turn).with(:move)
+    context 'if valid_turn? is true it sends the #place_move message to board' do
+      before do
+        allow(board).to receive(:valid_turn?).and_return(true)
+        allow(board).to receive(:place_turn)
+      end
+
+      it 'sends the message #valid_turn? to board' do
+        expect(board).to receive(:valid_turn?)
+        game.validate_turn
+      end
+
+      it 'sends the message #place_turn to board' do
+        expect(board).to receive(:place_turn)
+        game.validate_turn
+      end
     end
 
-    it 'sends the #place_turn message to board with @move as a argument' do
-      move = game.move
-      expect(board).to receive(:place_turn).with(move)
-      game.place_turn
+    context 'if valid_turn? is false it sends the #play_turn message to self' do
+      before do
+        allow(board).to receive(:valid_turn?).and_return(false)
+        allow(game).to receive(:play_turn)
+      end
+
+      it 'sends the message #valid_turn? to board' do
+        expect(board).to receive(:valid_turn?)
+        game.validate_turn
+      end
+
+      it 'sends the message #play_turn to self' do
+        expect(game).to receive(:play_turn)
+        game.validate_turn
+      end
     end
   end
 end

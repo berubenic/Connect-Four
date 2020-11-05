@@ -30,7 +30,11 @@ class Game
     return player_two if player_two.turn == true
   end
 
-  def place_turn
-    board.place_turn(move)
+  def validate_turn
+    if board.valid_turn?
+      board.place_turn
+    else
+      play_turn
+    end
   end
 end
