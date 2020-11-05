@@ -12,6 +12,8 @@ class Board
     create_board
   end
 
+  def place_turn(move); end
+
   def create_board
     @cells = []
     (0..5).each do |y_coordinate|

@@ -58,7 +58,7 @@ describe Game do
 
     context 'player_one.turn is true and player_two.turn is false' do
       before do
-        allow(player_one).to receive(:play_turn)
+        allow(player_one).to receive(:play_turn).and_return('some_move')
         allow(player_one).to receive(:turn).and_return(true)
         allow(player_two).to receive(:play_turn)
         allow(player_two).to receive(:turn).and_return(false)
@@ -73,13 +73,18 @@ describe Game do
         expect(player_two).not_to receive(:play_turn)
         game.play_turn
       end
+
+      it 'assigns @move' do
+        game.play_turn
+        expect(game.move).not_to be nil
+      end
     end
 
     context 'player_one.turn is false and player_two.turn is true' do
       before do
         allow(player_one).to receive(:play_turn)
         allow(player_one).to receive(:turn).and_return(false)
-        allow(player_two).to receive(:play_turn)
+        allow(player_two).to receive(:play_turn).and_return('some_move')
         allow(player_two).to receive(:turn).and_return(true)
       end
 
@@ -92,6 +97,28 @@ describe Game do
         expect(player_two).to receive(:play_turn)
         game.play_turn
       end
+
+      it 'assigns @move' do
+        game.play_turn
+        expect(game.move).not_to be nil
+      end
+    end
+  end
+
+  describe '#place_turn' do
+    let(:board) { instance_double(Board) }
+    let(:player_one) { instance_double(Player) }
+    let(:player_two) { instance_double(Player) }
+    subject(:game) { described_class.new(board, player_one, player_two) }
+
+    before do
+      allow(board).to receive(:place_turn).with(:move)
+    end
+
+    it 'sends the #place_turn message to board with @move as a argument' do
+      move = game.move
+      expect(board).to receive(:place_turn).with(move)
+      game.place_turn
     end
   end
 end
