@@ -31,8 +31,16 @@ class Board
     valid_number?(move)
   end
 
-  def valid_number?(_move)
+  def valid_number?(move)
+    move = move.to_i
+    return true if move >= 0 && move <= 6
+
+    invalid_number_message
     false
+  end
+
+  def invalid_number_message
+    puts 'Invalid move, must be a number between 0 and 6'
   end
 
   def column_full?(move) end

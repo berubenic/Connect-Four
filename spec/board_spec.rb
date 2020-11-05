@@ -37,4 +37,28 @@ describe Board do
       expect(board.create_row(y_coordinate)).to be_a(Array)
     end
   end
+
+  describe '#valid_number' do
+    it 'returns true if move is a number between 0 and 6' do
+      move = '0'
+      expect(board.valid_number?(move)).to be true
+    end
+
+    it 'returns false if move is greater than 6' do
+      move = '7'
+      expect(board.valid_number?(move)).to be false
+    end
+
+    it 'returns false if move is less than zero' do
+      move = '-1'
+      expect(board.valid_number?(move)).to be false
+    end
+  end
+
+  describe '#invalid_number_message' do
+    it 'outputs correct phrase' do
+      correct_phrase = "Invalid move, must be a number between 0 and 6\n"
+      expect { board.invalid_number_message }.to output(correct_phrase).to_stdout
+    end
+  end
 end
