@@ -38,7 +38,7 @@ describe Board do
     end
   end
 
-  describe '#valid_number' do
+  describe '#valid_number?' do
     it 'returns true if move is a number between 0 and 6' do
       move = '0'
       expect(board.valid_number?(move)).to be true
@@ -76,7 +76,7 @@ describe Board do
     end
   end
 
-  describe '#column_not_full' do
+  describe '#column_not_full?' do
     before do
       allow(board).to receive(:top_row_content).and_return(['blue', nil, nil, nil, nil, nil, nil])
     end
@@ -92,7 +92,7 @@ describe Board do
     end
   end
 
-  describe '#valid_turn' do
+  describe '#valid_turn?' do
     context '#valid_number? is true and #column_not_full? is true' do
       before do
         allow(board).to receive(:valid_number?).and_return(true)
@@ -151,6 +151,36 @@ describe Board do
         expect(board).not_to receive(:column_not_full?)
         board.valid_turn?(move)
       end
+    end
+  end
+
+  describe '#place_turn' do
+    before do
+      allow(board).to receive(:find_empty_cell)
+      board.create_board
+    end
+
+    it 'sends #find_empty_cell to self' do
+      move = 'some_move'
+      color = 'some_color'
+      expect(board).to receive(:find_empty_cell)
+      board.place_turn(move, color)
+    end
+  end
+
+  describe '#find_empty_cell' do
+    let(:cell) { board.cells[5][0] }
+
+    before do
+      board.create_board
+      allow(cell).to receive(:update_content)
+    end
+
+    it 'sends #update_content to cell' do
+      column = [cell]
+      color = 'some_color'
+      expect(cell).to receive(:update_content)
+      board.find_empty_cell(column, color)
     end
   end
 end

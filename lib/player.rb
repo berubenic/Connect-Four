@@ -2,10 +2,11 @@
 
 # Player
 class Player
-  attr_reader :name, :turn
-  def initialize(boolean = false)
+  attr_reader :name, :turn, :color
+  def initialize(boolean = false, color = nil)
     @name = nil
     @turn = boolean
+    @color = color
   end
 
   def prepare_game

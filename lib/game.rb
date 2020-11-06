@@ -8,7 +8,7 @@ require_relative 'cell'
 class Game
   attr_reader :board, :player_one, :player_two, :move
 
-  def initialize(board = Board.new, player_one = Player.new(true), player_two = Player.new(false))
+  def initialize(board = Board.new, player_one = Player.new(true, 'blue'), player_two = Player.new(false, 'red'))
     @board = board
     @player_one = player_one
     @player_two = player_two
@@ -32,7 +32,7 @@ class Game
 
   def validate_turn
     if board.valid_turn?(move)
-      board.place_turn(move)
+      board.place_turn(move, current_player.color)
     else
       play_turn
     end

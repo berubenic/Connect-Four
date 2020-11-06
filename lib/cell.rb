@@ -11,4 +11,6 @@ class Cell
   def cell_empty?
     content.nil?
   end
+
+  def update_content(color); end
 end

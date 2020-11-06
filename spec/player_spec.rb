@@ -13,6 +13,10 @@ describe Player do
     it 'assigns @turn as false' do
       expect(player.turn).to be(true).or be(false)
     end
+
+    it 'assigns @color' do
+      expect(player.color).to be nil
+    end
   end
 
   describe '#prepare_game' do

@@ -54,5 +54,16 @@ class Board
     cells[0].map(&:content)
   end
 
-  def place_turn(move) end
+  def place_turn(move, color)
+    columns = cells.transpose
+    column_being_played = columns[move.to_i]
+    column_from_bottom = column_being_played.reverse
+    find_empty_cell(column_from_bottom, color)
+  end
+
+  def find_empty_cell(column, color)
+    column.each do |cell|
+      return cell.update_content(color) if cell.content.nil?
+    end
+  end
 end
