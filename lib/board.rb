@@ -30,7 +30,7 @@ class Board
   end
 
   def valid_turn?(move)
-    valid_number?(move)
+    valid_number?(move) && column_not_full?(move)
   end
 
   def valid_number?(move)

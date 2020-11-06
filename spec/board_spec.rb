@@ -91,4 +91,66 @@ describe Board do
       expect(board.column_not_full?(move)).to be false
     end
   end
+
+  describe '#valid_turn' do
+    context '#valid_number? is true and #column_not_full? is true' do
+      before do
+        allow(board).to receive(:valid_number?).and_return(true)
+        allow(board).to receive(:column_not_full?).and_return(true)
+      end
+
+      it 'returns true' do
+        move = 'some_move'
+        expect(board.valid_turn?(move)).to be true
+      end
+    end
+
+    context '#valid_number? is true and #column_not_full? is false' do
+      before do
+        allow(board).to receive(:valid_number?).and_return(true)
+        allow(board).to receive(:column_not_full?).and_return(false)
+      end
+
+      it 'returns false' do
+        move = 'some_move'
+        expect(board.valid_turn?(move)).to be false
+      end
+    end
+
+    context '#valid_number? is false and #column_not_full? is true' do
+      before do
+        allow(board).to receive(:valid_number?).and_return(false)
+        allow(board).to receive(:column_not_full?).and_return(true)
+      end
+
+      it 'returns false' do
+        move = 'some_move'
+        expect(board.valid_turn?(move)).to be false
+      end
+
+      it 'does not send #column_not_full?' do
+        move = 'some_move'
+        expect(board).not_to receive(:column_not_full?)
+        board.valid_turn?(move)
+      end
+    end
+
+    context '#valid_number? is false and #column_not_full? is false' do
+      before do
+        allow(board).to receive(:valid_number?).and_return(false)
+        allow(board).to receive(:column_not_full?).and_return(false)
+      end
+
+      it 'returns false' do
+        move = 'some_move'
+        expect(board.valid_turn?(move)).to be false
+      end
+
+      it 'does not send #column_not_full?' do
+        move = 'some_move'
+        expect(board).not_to receive(:column_not_full?)
+        board.valid_turn?(move)
+      end
+    end
+  end
 end
