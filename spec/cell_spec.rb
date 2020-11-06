@@ -46,4 +46,15 @@ describe Cell do
       end
     end
   end
+
+  describe '#update_content' do
+    let(:content) { cell.instance_variable_get(:@content) }
+    subject(:cell) { described_class.new(0, 0) }
+
+    it 'assigns @content the color' do
+      color = 'blue'
+      cell.update_content(color)
+      expect(content).to eq(color)
+    end
+  end
 end

@@ -12,5 +12,7 @@ class Cell
     content.nil?
   end
 
-  def update_content(color); end
+  def update_content(color)
+    @content = color
+  end
 end
