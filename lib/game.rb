@@ -37,4 +37,8 @@ class Game
       play_turn
     end
   end
+
+  def verify_win
+    board.verify_win
+  end
 end

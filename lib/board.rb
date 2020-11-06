@@ -66,4 +66,6 @@ class Board
       return cell.update_content(color) if cell.content.nil?
     end
   end
+
+  def verify_win; end
 end

@@ -15,4 +15,8 @@ class Cell
   def update_content(color)
     @content = color
   end
+
+  def inspect
+    "Coordinate: #{coordinate} - Content: #{content}"
+  end
 end

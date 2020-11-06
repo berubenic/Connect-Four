@@ -147,4 +147,20 @@ describe Game do
       end
     end
   end
+
+  describe '#verify_win' do
+    let(:board) { instance_double(Board) }
+    let(:player_one) { instance_double(Player) }
+    let(:player_two) { instance_double(Player) }
+    subject(:game) { described_class.new(board, player_one, player_two) }
+
+    before do
+      allow(board).to receive(:verify_win)
+    end
+
+    it 'sends the message #verify_win to board' do
+      expect(board).to receive(:verify_win)
+      game.verify_win
+    end
+  end
 end
