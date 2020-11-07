@@ -67,5 +67,27 @@ class Board
     end
   end
 
-  def verify_win; end
+  def verify_win
+    diagonals
+  end
+
+  def diagonals
+    left_diagonals
+  end
+
+  def left_diagonals
+    arr = set_left_diagonals
+    keep_length_of_four(arr)
+  end
+
+  def set_left_diagonals
+    arr = cells
+    padding = [*0..(arr.length - 1)].map { |i| [nil] * i }
+    padded = padding.reverse.zip(arr).zip(padding).map(&:flatten)
+    padded.transpose.map(&:compact)
+  end
+
+  def keep_length_of_at_least_four(arr)
+    arr.filter_map { |a| a if a.length >= 4 }
+  end
 end

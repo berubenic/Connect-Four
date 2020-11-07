@@ -183,4 +183,46 @@ describe Board do
       board.find_empty_cell(column, color)
     end
   end
+
+  describe '#verify_win' do
+    before do
+      allow(board).to receive(:diagonals)
+    end
+
+    it 'sends #diagonals to self' do
+      expect(board).to receive(:diagonals)
+      board.verify_win
+    end
+  end
+
+  describe '#diagonals' do
+    before do
+      allow(board).to receive(:left_diagonals)
+    end
+
+    it 'sends #left_diagonals to self' do
+      expect(board).to receive(:left_diagonals)
+      board.diagonals
+    end
+  end
+
+  describe '#left_diagonals' do
+  end
+
+  describe '#keep_length_of_at_least_four' do
+    it 'nested elements are only length of four' do
+      arr = [[1], [1, 2, 3, 4], [1, 2, 3], [1, 2, 3, 4, 5]]
+      result = board.keep_length_of_at_least_four(arr)
+      expect(result).to eq([[1, 2, 3, 4], [1, 2, 3, 4, 5]])
+    end
+  end
+
+  describe '#set_left_diagonals' do
+    before do
+      board.create_board
+    end
+    it 'returns an array' do
+      expect(board.set_left_diagonals).to be_a(Array)
+    end
+  end
 end
