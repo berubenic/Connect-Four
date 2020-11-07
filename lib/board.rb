@@ -30,15 +30,8 @@ class Board
     row? || column? || right_diagonal? || left_diagonal?
   end
 
-  def print_board
-    puts ' 0  1  2  3  4  5  6'
-    puts '  - - - - - - - - - - - - - - - - '
-    cells.each do |row|
-      row.each { |cell| print "| #{display_content(cell)} " }
-      print '|'
-      puts "\n"
-      puts '  - - - - - - - - - - - - - - - - '
-    end
+  def display_board
+    print_board
   end
 
   private
@@ -135,6 +128,17 @@ class Board
       '  '
     else
       cell.content
+    end
+  end
+
+  def print_board
+    puts ' 0  1  2  3  4  5  6'
+    puts '  - - - - - - - - - - - - - - - - '
+    cells.each do |row|
+      row.each { |cell| print "| #{display_content(cell)} " }
+      print '|'
+      puts "\n"
+      puts '  - - - - - - - - - - - - - - - - '
     end
   end
 end

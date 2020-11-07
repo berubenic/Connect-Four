@@ -3,8 +3,8 @@
 # Player
 class Player
   attr_reader :name, :turn, :color
-  def initialize(boolean = false, color = nil)
-    @name = nil
+  def initialize(name = nil, boolean = false, color = nil)
+    @name = name
     @turn = boolean
     @color = color
   end
@@ -18,7 +18,7 @@ class Player
   end
 
   def ask_name
-    puts 'What is your name?'
+    puts "What is your name? [#{name}]"
     capture_input
   end
 

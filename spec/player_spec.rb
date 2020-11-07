@@ -6,7 +6,7 @@ describe Player do
   subject(:player) { described_class.new }
 
   describe '#initialize' do
-    it 'does not assign @name' do
+    it 'assigns @name' do
       expect(player.name).to be nil
     end
 
@@ -45,7 +45,7 @@ describe Player do
       allow(player).to receive(:capture_input)
     end
     it 'outputs correct phrase' do
-      correct_phrase = "What is your name?\n"
+      correct_phrase = "What is your name? []\n"
       expect { player.ask_name }.to output(correct_phrase).to_stdout
     end
   end
