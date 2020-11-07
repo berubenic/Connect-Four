@@ -143,15 +143,4 @@ describe Board do
       end
     end
   end
-
-  describe '#print_board' do
-    context 'when board is empty' do
-      before do
-        board.prepare_game
-      end
-
-      it 'prints board' do
-      end
-    end
-  end
 end
