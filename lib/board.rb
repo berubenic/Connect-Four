@@ -123,7 +123,7 @@ class Board
   end
 
   def keep_length_of_at_least_four(arr)
-    arr.filter_map { |a| a if a.length >= 4 }
+    arr.filter { |a| a.length >= 4 }
   end
 
   def display_content(cell)
