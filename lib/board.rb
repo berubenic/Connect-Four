@@ -52,20 +52,26 @@ class Board
   end
 
   def valid_number?(move)
+    return invalid_number_message if move.numeric? == false
+
     move = move.to_i
     return true if move >= 0 && move <= 6
-
-    invalid_number_message
-    false
   end
 
   def invalid_number_message
     puts 'Invalid move, must be a number between 0 and 6'
+    false
   end
 
   def column_not_full?(move)
     content = top_row_content
-    content[move.to_i].nil?
+    return true if content[move.to_i].nil?
+
+    column_full_message
+  end
+
+  def column_full_message
+    puts 'The column is full, please select a different column.'
   end
 
   def find_empty_cell(column, color)
@@ -132,7 +138,7 @@ class Board
   end
 
   def print_board
-    puts ' 0  1  2  3  4  5  6'
+    puts '  0    1    2    3    4    5    6'
     puts '  - - - - - - - - - - - - - - - - '
     cells.each do |row|
       row.each { |cell| print "| #{display_content(cell)} " }

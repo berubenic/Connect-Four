@@ -3,6 +3,7 @@
 require_relative 'board'
 require_relative 'player'
 require_relative 'cell'
+require_relative 'monkey_patch/string'
 
 # Game
 class Game
@@ -38,7 +39,7 @@ class Game
     end
   end
 
-  def verify_win
+  def verify_win?
     board.verify_win?
   end
 

@@ -28,7 +28,7 @@ class Player
   end
 
   def ask_turn
-    puts "Where do you want to play? \n Enter the column number [0-6]"
+    puts "#{name}, where do you want to play? \n Enter the column number [0-6]"
     capture_input
   end
 

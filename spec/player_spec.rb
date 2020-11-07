@@ -65,7 +65,7 @@ describe Player do
       allow(player).to receive(:capture_input)
     end
     it 'outputs correct phrase' do
-      correct_phrase = "Where do you want to play? \n Enter the column number [0-6]\n"
+      correct_phrase = ", where do you want to play? \n Enter the column number [0-6]\n"
       expect { player.ask_turn }.to output(correct_phrase).to_stdout
     end
   end

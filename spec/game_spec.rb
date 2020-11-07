@@ -148,7 +148,7 @@ describe Game do
     end
   end
 
-  describe '#verify_win' do
+  describe '#verify_win?' do
     let(:board) { instance_double(Board) }
     let(:player_one) { instance_double(Player) }
     let(:player_two) { instance_double(Player) }
@@ -160,7 +160,7 @@ describe Game do
 
     it 'sends the message #verify_win? to board' do
       expect(board).to receive(:verify_win?)
-      game.verify_win
+      game.verify_win?
     end
   end
 
