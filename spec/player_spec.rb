@@ -69,4 +69,24 @@ describe Player do
       expect { player.ask_turn }.to output(correct_phrase).to_stdout
     end
   end
+
+  describe '#switch_player' do
+    context 'player.turn is false' do
+      let(:player) { described_class.new(nil, false, nil) }
+
+      it 'assigns @turn to true' do
+        player.switch_player
+        expect(player.turn).to be true
+      end
+    end
+
+    context 'player.turn is true' do
+      let(:player) { described_class.new(nil, true, nil) }
+
+      it 'assigns @turn to false' do
+        player.switch_player
+        expect(player.turn).to be false
+      end
+    end
+  end
 end

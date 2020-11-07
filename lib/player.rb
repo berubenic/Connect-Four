@@ -35,4 +35,12 @@ class Player
   def capture_input
     gets.chomp
   end
+
+  def switch_player
+    if turn == false
+      @turn = true
+    elsif turn == true
+      @turn = false
+    end
+  end
 end

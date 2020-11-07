@@ -163,4 +163,22 @@ describe Game do
       game.verify_win
     end
   end
+
+  describe '#switch_player' do
+    let(:board) { instance_double(Board) }
+    let(:player_one) { instance_double(Player) }
+    let(:player_two) { instance_double(Player) }
+    subject(:game) { described_class.new(board, player_one, player_two) }
+
+    before do
+      allow(player_one).to receive(:switch_player)
+      allow(player_two).to receive(:switch_player)
+    end
+
+    it 'sends #switch_player message to Player' do
+      expect(player_one).to receive(:switch_player)
+      expect(player_two).to receive(:switch_player)
+      game.switch_player
+    end
+  end
 end

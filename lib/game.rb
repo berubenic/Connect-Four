@@ -42,7 +42,16 @@ class Game
     board.verify_win?
   end
 
+  def switch_player
+    player_one.switch_player
+    player_two.switch_player
+  end
+
   def display_board
     board.display_board
+  end
+
+  def announce_winner
+    puts "#{current_player.name} wins!"
   end
 end
