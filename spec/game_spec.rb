@@ -155,11 +155,11 @@ describe Game do
     subject(:game) { described_class.new(board, player_one, player_two) }
 
     before do
-      allow(board).to receive(:verify_win)
+      allow(board).to receive(:verify_win?)
     end
 
-    it 'sends the message #verify_win to board' do
-      expect(board).to receive(:verify_win)
+    it 'sends the message #verify_win? to board' do
+      expect(board).to receive(:verify_win?)
       game.verify_win
     end
   end
