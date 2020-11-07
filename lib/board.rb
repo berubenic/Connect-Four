@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require_relative 'cell'
-require 'pry'
-
 # Board
 class Board
   attr_reader :cells

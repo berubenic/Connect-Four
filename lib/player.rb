@@ -17,14 +17,22 @@ class Player
     @name = ask_name
   end
 
-  def ask_name
-    puts "What is your name? [#{name}]"
-    capture_input
-  end
-
   def play_turn
     move = ask_turn
     move
+  end
+
+  def switch_player
+    if turn == false
+      @turn = true
+    elsif turn == true
+      @turn = false
+    end
+  end
+
+  def ask_name
+    puts "What is your name? [#{name}]"
+    capture_input
   end
 
   def ask_turn
@@ -34,13 +42,5 @@ class Player
 
   def capture_input
     gets.chomp
-  end
-
-  def switch_player
-    if turn == false
-      @turn = true
-    elsif turn == true
-      @turn = false
-    end
   end
 end
