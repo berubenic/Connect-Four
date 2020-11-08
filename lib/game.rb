@@ -44,6 +44,10 @@ class Game
     board.verify_win?
   end
 
+  def verify_tie?
+    board.verify_tie?
+  end
+
   def switch_player
     player_one.switch_player
     player_two.switch_player

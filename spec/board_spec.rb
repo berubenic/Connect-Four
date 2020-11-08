@@ -143,4 +143,26 @@ describe Board do
       end
     end
   end
+
+  describe '#verify_tie?' do
+    context 'Top row is full' do
+      before do
+        allow(board).to receive(:top_row_full?).and_return(true)
+      end
+
+      it 'returns true' do
+        expect(board.verify_tie?).to be true
+      end
+    end
+
+    context 'Top row is not full' do
+      before do
+        allow(board).to receive(:top_row_full?).and_return(false)
+      end
+
+      it 'returns false' do
+        expect(board.verify_tie?).to be false
+      end
+    end
+  end
 end

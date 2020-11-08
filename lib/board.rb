@@ -27,6 +27,10 @@ class Board
     row? || column? || right_diagonal? || left_diagonal?
   end
 
+  def verify_tie?
+    top_row_full?
+  end
+
   def display_board
     print_board
   end
@@ -79,6 +83,13 @@ class Board
 
   def top_row_content
     cells[0].map(&:content)
+  end
+
+  def top_row_full?
+    top_row = top_row_content
+    return false if top_row.include?(nil)
+
+    true
   end
 
   def row?

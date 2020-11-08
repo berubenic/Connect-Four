@@ -164,4 +164,20 @@ describe Game do
       game.switch_player
     end
   end
+
+  describe '#verify_tie?' do
+    let(:board) { instance_double(Board) }
+    let(:player_one) { instance_double(Player) }
+    let(:player_two) { instance_double(Player) }
+    subject(:game) { described_class.new(board, player_one, player_two) }
+
+    before do
+      allow(board).to receive(:verify_tie?)
+    end
+
+    it 'sends #verify_tie message to Board' do
+      expect(board).to receive(:verify_tie?)
+      game.verify_tie?
+    end
+  end
 end
