@@ -36,6 +36,7 @@ class Game
       board.place_turn(move, current_player.color)
     else
       play_turn
+      validate_turn
     end
   end
 
