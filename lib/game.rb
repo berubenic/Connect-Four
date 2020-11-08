@@ -60,4 +60,8 @@ class Game
   def announce_winner
     puts "#{current_player.name} wins!"
   end
+
+  def announce_tie
+    puts 'Game is a Tie!'
+  end
 end
