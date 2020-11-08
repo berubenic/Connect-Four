@@ -129,23 +129,6 @@ describe Game do
         game.validate_turn
       end
     end
-
-    context 'if valid_turn? is false it sends the #play_turn message to self' do
-      before do
-        allow(board).to receive(:valid_turn?).with(game.move).and_return(false)
-        allow(game).to receive(:play_turn)
-      end
-
-      it 'sends the message #valid_turn? to board' do
-        expect(board).to receive(:valid_turn?).with(game.move)
-        game.validate_turn
-      end
-
-      it 'sends the message #play_turn to self' do
-        expect(game).to receive(:play_turn)
-        game.validate_turn
-      end
-    end
   end
 
   describe '#verify_win?' do
