@@ -14,14 +14,12 @@ Connect Four built using Test Driven Development.
   <li>Fully tested using RSpec</li>
 </ul>
 
-## Installation
+## Instructions
 
 - Clone the repo locally. ([Instructions](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository-from-github/cloning-a-repository))
 
 - `cd Connect-Four` into the directory.
 
-- And then execute:
+- Enter `ruby example/example.rb` to start a new game
 
-```ruby
-$ bundle install
-```
+
