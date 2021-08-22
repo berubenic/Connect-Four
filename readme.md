@@ -4,6 +4,8 @@ Connect Four built using Test Driven Development.
 
 [Link to repl.it](https://repl.it/@NicholasBerube/Connect-Four#readme.md)
 
+[Link to project instruction](https://www.theodinproject.com/paths/full-stack-ruby-on-rails/courses/ruby-programming/lessons/testing-your-ruby-code#project-tdd-connect-four)
+
 ## Demo
 
 ![](Diagonal.gif)
